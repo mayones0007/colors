@@ -147,7 +147,8 @@ export default {
   margin: auto;
 }
 .cart__items {
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 .cart__item {
   display:grid;

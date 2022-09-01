@@ -36,16 +36,16 @@ export default {
     },
     cartItems(){
       return this.$store.state.cartItems
-    }
+    },
   },
   methods: {
     setShowLinks(){
       this.$store.commit('setShowLinks')
     },
     setShowCart(){
-    this.$store.commit('setShowCart')
-  }
-  }
+      this.$store.commit('setShowCart')
+    },
+  },
 }
 </script>
 

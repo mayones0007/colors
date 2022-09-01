@@ -63,7 +63,9 @@ export default {
     },
   },
   created() {
-    this.$store.commit('setIsDesktop', isDesktop())
+    window.addEventListener('resize', () => {
+      this.$store.commit('setIsDesktop', isDesktop())
+    })
   }
 }
 </script>

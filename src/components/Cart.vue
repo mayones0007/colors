@@ -3,7 +3,7 @@
     <div v-if="showCart" class="cart" :class="{'cart-mobile': !isDesktop}">
       <div class="cart__header">
         <div class="cart__header-name">Корзина</div>
-        <img src="/icons/close.svg" class="cart__header-button" @click="setShowCart"/>
+        <img src="./icons/close.svg" class="cart__header-button" @click="setShowCart"/>
       </div>
       <div class="cart__middle">
         <div class="cart__middle-count">{{cartItems.length}} {{ending(cartItems.length)}}</div>
@@ -17,11 +17,11 @@
             <div class="cart__item-name">{{product.name}}</div>
             <div class="cart__item-price">{{product.price}} &#8381;</div>
           </div>
-          <img src="/icons/minus.svg" class="cart__item-button" :class="{'cart__item-button--disable': product.count <= 1}" @click="deleteInCart(product)"/>
+          <img src="./icons/minus.svg" class="cart__item-button" :class="{'cart__item-button--disable': product.count <= 1}" @click="deleteInCart(product)"/>
           <div>{{product.count}}</div>
-          <img src="/icons/plus.svg" class="cart__item-button" :class="{'cart__item-button--disable': product.availableCount <= product.count}" @click="addInCart(product)"/>
+          <img src="./icons/plus.svg" class="cart__item-button" :class="{'cart__item-button--disable': product.availableCount <= product.count}" @click="addInCart(product)"/>
           <img v-if="isProductAvailable(product)" src="/icons/repeat.svg" class="cart__item-button-repeat"/>
-          <img v-else src="/icons/close.svg" class="cart__item-button-delete" @click="deleteItemInCart(product)"/>
+          <img v-else src="./icons/close.svg" class="cart__item-button-delete" @click="deleteItemInCart(product)"/>
         </div>
       </div>
       <div class="cart__footer">

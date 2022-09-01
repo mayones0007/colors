@@ -6,7 +6,7 @@
         <img class="products__item-image" :src="`./products/${product.id}.jpg`">
         <div class="products__item-description" :class="{'products__item-description-mobile': !isDesktop}">{{product.name}}</div>
         <div class="products__item-price">{{product.price}} &#8381;</div>
-        <img src="/icons/plus.svg" class="products__item-button" :class="{'products__item-button-desktop': isDesktop, 'products__item-button-disable': product.availableCount < 1}" @click="addInCart(product)"/>
+        <img src="./icons/plus.svg" class="products__item-button" :class="{'products__item-button-desktop': isDesktop, 'products__item-button-disable': product.availableCount < 1}" @click="addInCart(product)"/>
       </div>
     </div>
   </div>

@@ -4,7 +4,7 @@
     <div v-else @click="showFilters">Фильтры</div>
     <div class="sort__value" @click="setShowSorts">
       {{appliedSort.name}}
-      <img src="/icons/triangle.svg">
+      <img src="./icons/triangle.svg">
     </div>
     <div v-if="isShowSorts" class="sort__window">
       <div v-for="sort in this.sorts" :key="sort.id" class="sort__value">

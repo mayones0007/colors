@@ -1,7 +1,7 @@
 <template>
   <div class="navbar" :class="{'navbar-mobile': !isDesktop}">
-    <img v-if="!isDesktop" class="navbar__burger"  src="./icons/burger.svg" @click="setShowLinks"/>
-    <img v-else src="./icons/logo.svg"/>
+    <img v-if="!isDesktop" class="navbar__burger"  src="icons/burger.svg" @click="setShowLinks"/>
+    <img v-else src="icons/logo.svg"/>
     <div v-if="showLinks || isDesktop" class="navbar__links" :class="{'navbar__links-mobile': !isDesktop}">
       <div class="navbar__links-items" :class="{'navbar__links-items-mobile': !isDesktop}">
         <div v-for="link in this.links" :key="link.id" class="navbar__links-item" >{{link.name}}</div>
@@ -11,12 +11,12 @@
         <div class="navbar__tel-text" :class="{'navbar__tel-text-mobile': !isDesktop}">Заказать звонок</div>
       </div>
       <div class="navbar__menu">
-        <img src="./icons/search.svg" class="navbar__menu-item" />
-        <img src="./icons/profile.svg" class="navbar__menu-item" />
-        <img src="./icons/heart.svg" class="navbar__menu-item" />
+        <img src="icons/search.svg" class="navbar__menu-item" />
+        <img src="icons/profile.svg" class="navbar__menu-item" />
+        <img src="icons/heart.svg" class="navbar__menu-item" />
       </div>
     </div>
-    <img v-if="!isDesktop" src="/icons/logo.svg"/>
+    <img v-if="!isDesktop" src="icons/logo.svg"/>
     <div class="navbar__cart" @click="setShowCart">{{cartItems.length}}</div>
   </div>
 </template>

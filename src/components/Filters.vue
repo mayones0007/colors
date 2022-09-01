@@ -1,6 +1,6 @@
 <template>
   <div class="filters">
-    <img v-if="!isDesktop" src="/icons/line.svg" class="line"/>
+    <img v-if="!isDesktop" src="icons/line.svg" class="line"/>
     <div v-for="filter in this.filters" :key="filter.id" class="filter" @click="toggleFilter(filter)">
       <div class="filter-switcher" :class="`filter-switcher-${filter.isActive}`">
         <div class="filter-switcher-dot"/>

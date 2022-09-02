@@ -1,21 +1,18 @@
 <template>
-  <div class="gallery-window">
-    <div v-if="currentPicture>1" class="gallery-window__slider slider-left" @click="switchGallaryPicture(currentPicture-1)">
-      <div class="slider-btn-icon slider-btn-icon-left"/>
+  <div class="slider-window">
+    <img v-if="currentPicture > 0" src="icons/arrow.svg" class="slider-btn-icon slider-btn-icon-left" @click="switchGallaryPicture(currentPicture-1)">
+    <div class="slider-window__images">
+      <img v-for="index in 6" :key="index" class="slider-window__image" :style="`transform: translate(${-currentPicture * 100}%, 0)`" :src="`./slider/${index}.jpg`">
     </div>
-    <img class="gallery-window__image" :src="getPictureUrl">
-      <NavRoute class="gallery-window__navigation"/>
-      <div class="gallery-window__description">
-        <div class="gallery-window__header">Краски</div>
-        <div class="gallery-window__text">Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!</div>
-      </div>
-      <div class="gallery-window__radio">
-        <div v-for="index in 6" :key="index" class="gallery-window__radio-item" :class="{'gallery-window__radio-item--active': index === currentPicture}" @click="switchGallaryPicture(index)">
-        </div>
-      </div>
-    <div class="gallery-window__slider slider-right" @click="switchGallaryPicture(currentPicture+1)" v-if="currentPicture<6">
-      <div class="slider-btn-icon slider-btn-icon-right"/>
+    <NavRoute class="slider-window__navigation"/>
+    <div class="slider-window__description">
+      <div class="slider-window__header">Краски</div>
+      <div class="slider-window__text">Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!</div>
     </div>
+    <div class="slider-window__radio">
+      <div v-for="(n, i) in 6" :key="i" class="slider-window__radio-item" :class="{'slider-window__radio-item--active': i === currentPicture}" @click="switchGallaryPicture(i)"/>
+    </div>
+    <img v-if="currentPicture < 5" src="icons/arrow.svg" class="slider-btn-icon slider-btn-icon-right" @click="switchGallaryPicture(currentPicture+1)">
   </div>
 </template>
 
@@ -28,12 +25,7 @@ export default {
   },
   data() {
     return {
-      currentPicture: 1,
-    }
-  },
-  computed: {
-    getPictureUrl() {
-      return `./slider/${this.currentPicture}.jpg`
+      currentPicture: 0,
     }
   },
   methods: {
@@ -45,67 +37,45 @@ export default {
 </script>
 
 <style scoped>
-.gallery-window {
+.slider-window {
   position: relative;
   display:flex;
   height: 560px;
-}
-
-.gallery-window__slider {
-  width: 40%;
-  cursor: pointer;
-  z-index: 1;
-}
-
-.slider-right {
-  margin-left: -40%;
-  background: linear-gradient(90deg,transparent,rgba(0, 0, 0, 0.1));
-}
-
-.slider-left {
-  margin-right: -40%;
-  background: linear-gradient(-90deg,transparent,rgba(0, 0, 0, 0.1));
+  overflow: hidden;
 }
 
 .slider-btn-icon{
   position: absolute;
-  height: 20px;
-  width: 20px;
-  border-left: solid white 2px;
-  border-top: solid white 2px;
   top: 354px;
+  cursor: pointer;
+  z-index: 1;
 }
 
 .slider-btn-icon-left {
   left: 10%;
-  transform: rotate(-45deg);
+  transform: scale(-1, 1);
 }
 
 .slider-btn-icon-right {
   right: 10%;
-  transform: rotate(135deg);
 }
 
-.slider-right:hover {
-  background: linear-gradient(90deg,transparent,rgba(0, 0, 0, 0.3));
+.slider-window__images {
+  display: flex;
 }
 
-.slider-left:hover {
-  background: linear-gradient(-90deg,transparent,rgba(0, 0, 0, 0.3));
-}
-
-.gallery-window__image {
+.slider-window__image {
   object-fit: cover;
-  width: 100%;
+  width: 100vw;
+  transition-duration: 1s;
 }
-.gallery-window__navigation {
+.slider-window__navigation {
   position:absolute;
   top: 32px;
   left: 64px;
   filter: invert();
-  z-index: 1;
 }
-.gallery-window__description {
+.slider-window__description {
   position:absolute;
   top: 217px;
   left: 50%;
@@ -114,20 +84,20 @@ export default {
   width: 472px;
 }
 
-.gallery-window__header {
+.slider-window__header {
   font-weight: 400;
   font-size: 72px;
   letter-spacing: -0.02em;
 }
 
-.gallery-window__text {
+.slider-window__text {
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 0.02em;
   line-height: 130%;
 }
 
-.gallery-window__radio {
+.slider-window__radio {
   position: absolute;
   bottom: 39px;
   left: 50%;
@@ -140,16 +110,17 @@ export default {
   border-radius: 16px;
 }
 
-.gallery-window__radio-item {
+.slider-window__radio-item {
   width: 6px;
   height: 6px;
   background: white;
   opacity: 0.5;
   border-radius: 50%;
   cursor: pointer;
+  transition-duration: 500ms;
 }
 
-.gallery-window__radio-item--active {
+.slider-window__radio-item--active {
   opacity: 1;
 }
 </style>
